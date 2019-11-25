@@ -1,5 +1,8 @@
 
 package com.unip.reconhecimentofacial.frame;
+
+import com.unip.reconhecimentofacial.frame.cadastrar.RegistraPessoa;
+
 public class RFLogin extends javax.swing.JFrame {
 
     public RFLogin() {
@@ -12,9 +15,9 @@ public class RFLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bt_Cancelar = new javax.swing.JButton();
+        bt_Cadastrar = new javax.swing.JButton();
+        bt_Entrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Autorização - Login");
@@ -29,38 +32,38 @@ public class RFLogin extends javax.swing.JFrame {
         jLabel2.setText("Sistema de Segurança");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 290, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cancelar");
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        jButton1.setOpaque(true);
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 170, 110));
+        bt_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        bt_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bt_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Cancelar.setText("Cancelar");
+        bt_Cancelar.setContentAreaFilled(false);
+        bt_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        bt_Cancelar.setOpaque(true);
+        jPanel2.add(bt_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 170, 110));
 
-        jButton2.setBackground(new java.awt.Color(255, 153, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cadastrar");
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        jButton2.setFocusable(false);
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bt_Cadastrar.setBackground(new java.awt.Color(255, 153, 0));
+        bt_Cadastrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bt_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Cadastrar.setText("Cadastrar");
+        bt_Cadastrar.setContentAreaFilled(false);
+        bt_Cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        bt_Cadastrar.setFocusable(false);
+        bt_Cadastrar.setOpaque(true);
+        bt_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bt_CadastrarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 170, 110));
+        jPanel2.add(bt_Cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 170, 110));
 
-        jButton3.setBackground(new java.awt.Color(0, 204, 51));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Entrar");
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        jButton3.setOpaque(true);
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, 110));
+        bt_Entrar.setBackground(new java.awt.Color(0, 204, 51));
+        bt_Entrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bt_Entrar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Entrar.setText("Entrar");
+        bt_Entrar.setContentAreaFilled(false);
+        bt_Entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        bt_Entrar.setOpaque(true);
+        jPanel2.add(bt_Entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, 110));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 590, 390));
 
@@ -68,9 +71,9 @@ public class RFLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bt_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CadastrarActionPerformed
+        new RegistraPessoa().setVisible(true);
+    }//GEN-LAST:event_bt_CadastrarActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -81,9 +84,9 @@ public class RFLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bt_Cadastrar;
+    private javax.swing.JButton bt_Cancelar;
+    private javax.swing.JButton bt_Entrar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

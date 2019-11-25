@@ -1,9 +1,14 @@
 package com.unip.reconhecimentofacial.frame.cadastrar;
 
 import util.ConectaBanco;
+import util.PessoaControl;
+import util.PessoaModel;
 
 public class RegistraPessoa extends javax.swing.JFrame {
     
+    
+    PessoaControl pc;
+    PessoaModel pm;
     ConectaBanco conecta = new ConectaBanco();
     public RegistraPessoa() {
         initComponents();
@@ -18,16 +23,16 @@ public class RegistraPessoa extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txt_id_label = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
+        txt_Nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txt_Telefone = new javax.swing.JTextField();
+        txt_Sobrenome = new javax.swing.JTextField();
+        txt_Email = new javax.swing.JTextField();
+        bt_Salvar = new javax.swing.JButton();
+        bt_Anexar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Segurança - Cadastro");
@@ -61,12 +66,12 @@ public class RegistraPessoa extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txt_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txt_NomeActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
+        jPanel3.add(txt_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(100, 100, 100));
@@ -87,39 +92,39 @@ public class RegistraPessoa extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(100, 100, 100));
         jLabel5.setText("Email:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, -1));
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 190, -1));
-        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 190, -1));
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, -1));
+        jPanel3.add(txt_Telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 190, -1));
+        jPanel3.add(txt_Sobrenome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 190, -1));
+        jPanel3.add(txt_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 410, 120));
 
-        jButton1.setBackground(new java.awt.Color(60, 207, 127));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Salvar");
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setOpaque(true);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_Salvar.setBackground(new java.awt.Color(60, 207, 127));
+        bt_Salvar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bt_Salvar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Salvar.setText("Salvar");
+        bt_Salvar.setContentAreaFilled(false);
+        bt_Salvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_Salvar.setOpaque(true);
+        bt_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_SalvarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 140, 40));
+        jPanel1.add(bt_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 140, 40));
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 153));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Anexar Biometria");
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        jButton3.setOpaque(true);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bt_Anexar.setBackground(new java.awt.Color(0, 153, 153));
+        bt_Anexar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bt_Anexar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Anexar.setText("Anexar Biometria");
+        bt_Anexar.setContentAreaFilled(false);
+        bt_Anexar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        bt_Anexar.setOpaque(true);
+        bt_Anexar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bt_AnexarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 140, 30));
+        jPanel1.add(bt_Anexar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 140, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,14 +142,20 @@ public class RegistraPessoa extends javax.swing.JFrame {
         setBounds(0, 0, 428, 423);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bt_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_SalvarActionPerformed
+              
+        txt_Nome.setText(pm.getNome());
+        txt_Sobrenome.setText(pm.getSobrenome());
+        txt_Email.setText(pm.getEmail());
+        //txt_Telefone.setText(pm.setTelefone());
+        
+    }//GEN-LAST:event_bt_SalvarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bt_AnexarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AnexarActionPerformed
+    }//GEN-LAST:event_bt_AnexarActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    private void txt_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NomeActionPerformed
+    }//GEN-LAST:event_txt_NomeActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -155,8 +166,8 @@ public class RegistraPessoa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bt_Anexar;
+    private javax.swing.JButton bt_Salvar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -164,10 +175,10 @@ public class RegistraPessoa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txt_Email;
+    private javax.swing.JTextField txt_Nome;
+    private javax.swing.JTextField txt_Sobrenome;
+    private javax.swing.JTextField txt_Telefone;
     private javax.swing.JLabel txt_id_label;
     // End of variables declaration//GEN-END:variables
 
