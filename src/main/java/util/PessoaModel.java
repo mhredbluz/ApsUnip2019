@@ -5,6 +5,9 @@ public class PessoaModel {
     private String sobrenome;
     private String email;
     private int telefone;
+    private byte[] imagem;
+
+ 
     
     public PessoaModel(int id, String nome, String sobrenome, String email, int telefone){
         this.id = id;
@@ -12,8 +15,12 @@ public class PessoaModel {
         this.sobrenome = sobrenome;
         this.email = email;
         this.telefone = telefone;
+        
     }
-
+     
+    public PessoaModel() {
+    }
+   
     public int getId() {
         return id;
     }
@@ -53,5 +60,11 @@ public class PessoaModel {
     public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
-    
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
 }

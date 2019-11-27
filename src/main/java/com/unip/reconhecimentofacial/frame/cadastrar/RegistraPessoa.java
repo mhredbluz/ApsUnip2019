@@ -1,5 +1,10 @@
 package com.unip.reconhecimentofacial.frame.cadastrar;
 
+import UTIL.ManipularImagem;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.sql.SQLException;
+import javax.swing.JFileChooser;
 import util.ConectaBanco;
 import util.PessoaControl;
 import util.PessoaModel;
@@ -10,6 +15,7 @@ public class RegistraPessoa extends javax.swing.JFrame {
     PessoaControl pc;
     PessoaModel pm;
     ConectaBanco conecta = new ConectaBanco();
+    
     public RegistraPessoa() {
         initComponents();
         showIdUsuario();
@@ -33,6 +39,7 @@ public class RegistraPessoa extends javax.swing.JFrame {
         txt_Email = new javax.swing.JTextField();
         bt_Salvar = new javax.swing.JButton();
         bt_Anexar = new javax.swing.JButton();
+        txt_Caminho = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Segurança - Cadastro");
@@ -124,7 +131,15 @@ public class RegistraPessoa extends javax.swing.JFrame {
                 bt_AnexarActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_Anexar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 140, 30));
+        jPanel1.add(bt_Anexar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 90, 30));
+
+        txt_Caminho.setText("Adicione uma Digital");
+        txt_Caminho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CaminhoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_Caminho, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 190, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,19 +158,46 @@ public class RegistraPessoa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_SalvarActionPerformed
-              
-        txt_Nome.setText(pm.getNome());
-        txt_Sobrenome.setText(pm.getSobrenome());
-        txt_Email.setText(pm.getEmail());
-        //txt_Telefone.setText(pm.setTelefone());
+        pc = new PessoaControl();
+        pm = new PessoaModel();
+        
+        pm.setNome(txt_Nome.getText());
+        pm.setSobrenome(txt_Sobrenome.getText());
+        pm.setEmail(txt_Email.getText());
+        pm.setTelefone(Integer.parseInt(txt_Telefone.getText())); 
+        //pm.setImagem(ManipularImagem.getImgBytes(imagem));
+        pc.inserir(pm);
+        
         
     }//GEN-LAST:event_bt_SalvarActionPerformed
 
     private void bt_AnexarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AnexarActionPerformed
+        JFileChooser arquivo = new JFileChooser();
+        arquivo.setDialogTitle("Anexar Digital");
+        arquivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        
+        int opc = arquivo.showOpenDialog(this);
+        if(opc == JFileChooser.APPROVE_OPTION){
+            File file = new File("Caminho");
+            file = arquivo.getSelectedFile(); // recebe o caminho
+           BufferedImage bi = new BufferedImage(ManipularImagem.getImgBytes(pm.getImagem());
+                    
+            
+            String filename = file.getAbsolutePath();   
+            txt_Caminho.setText(filename);
+            
+            //ImageIcon imagem = new ImageIcon(arquivo.getSelectedFile().getPath());
+        }
+        pm.setImagem(ManipularImagem.getImgBytes(arquivo));
+               
     }//GEN-LAST:event_bt_AnexarActionPerformed
 
     private void txt_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NomeActionPerformed
     }//GEN-LAST:event_txt_NomeActionPerformed
+
+    private void txt_CaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CaminhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_CaminhoActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -175,6 +217,7 @@ public class RegistraPessoa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField txt_Caminho;
     private javax.swing.JTextField txt_Email;
     private javax.swing.JTextField txt_Nome;
     private javax.swing.JTextField txt_Sobrenome;
@@ -183,16 +226,18 @@ public class RegistraPessoa extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void showIdUsuario() {
+        
         conecta.conecta();
+        
         try{
-            conecta.executaPostegres("SELECT * FROM pessoa ");
+            conecta.executaPostegres("SELECT * FROM pessoa ORDER BY id LIMIT 1");
             conecta.rs.first();
             txt_id_label.setText(String.valueOf(conecta.rs.getInt("id")));
             int id = Integer.parseInt(txt_id_label.getText());
             id++;
-            txt_id_label.setText(String.valueOf("id"));
-        }catch(Exception e){
-            
+            txt_id_label.setText(String.valueOf(id));
+        }catch(SQLException | NumberFormatException e){
+            System.out.println(e);
         }
     }
 }

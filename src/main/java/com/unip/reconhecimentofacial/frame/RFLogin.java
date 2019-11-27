@@ -12,12 +12,15 @@ public class RFLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         bt_Cancelar = new javax.swing.JButton();
         bt_Cadastrar = new javax.swing.JButton();
         bt_Entrar = new javax.swing.JButton();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Autorização - Login");
@@ -63,6 +66,11 @@ public class RFLogin extends javax.swing.JFrame {
         bt_Entrar.setContentAreaFilled(false);
         bt_Entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         bt_Entrar.setOpaque(true);
+        bt_Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_EntrarActionPerformed(evt);
+            }
+        });
         jPanel2.add(bt_Entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 170, 110));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 590, 390));
@@ -74,6 +82,10 @@ public class RFLogin extends javax.swing.JFrame {
     private void bt_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CadastrarActionPerformed
         new RegistraPessoa().setVisible(true);
     }//GEN-LAST:event_bt_CadastrarActionPerformed
+
+    private void bt_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_EntrarActionPerformed
+        new Entrar().setVisible(true);
+    }//GEN-LAST:event_bt_EntrarActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -90,5 +102,6 @@ public class RFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
